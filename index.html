@@ -422,10 +422,10 @@ footer .fb .wm{font-family:'Cinzel',serif;font-weight:600;letter-spacing:.04em;c
           Leave ""  to disable preview for that beat (shows "No preview").
    ======================================================================= */
 const BEATS = [
-  { title:"Omni",   bpm:140, key:"F# Min", price:"$34.95", tags:["dark","808 heavy"], src:"beats/Omni.wav", buy:"https://bsta.rs/euZvjK" },
-  { title:"Cooked",   bpm:146, key:"C# Min", price:"$34.95", tags:["aggressive","drill"], src:"beats/cooked2.wav" },
-  { title:"Rollin", bpm:132, key:"A Min",  price:"$29.95", tags:["melodic","ambient"], src:"beats/Rollin2.wav" },
-  { title:"Porque",     bpm:150, key:"D Min",  price:"$39.95", tags:["hard","trap"], src:"beats/porque2.wav" },
+  { title:"Saturn Lean",   bpm:140, key:"F# Min", price:"$34.95", tags:["dark","808 heavy"], src:"" },
+  { title:"Cold Static",   bpm:146, key:"C# Min", price:"$34.95", tags:["aggressive","drill"], src:"" },
+  { title:"Marble Floors", bpm:132, key:"A Min",  price:"$29.95", tags:["melodic","ambient"], src:"" },
+  { title:"Night Tax",     bpm:150, key:"D Min",  price:"$39.95", tags:["hard","trap"], src:"" },
   { title:"Velour",        bpm:138, key:"G Min",  price:"$34.95", tags:["smooth","rnb"], src:"" },
   { title:"Lowtide",       bpm:144, key:"E Min",  price:"$34.95", tags:["spacey","808 heavy"], src:"" },
 ];
@@ -445,6 +445,7 @@ const LICENSES = [
 /* 3. CONTACTS (already set to yours) */
 const EMAIL = "jazzyproductions21@gmail.com";
 const YT    = "https://youtube.com/@jazzyproductions5137";
+const BEATSTARS = "https://bsta.rs/euZvjK";
 /* ======================================================================= */
 
 const mailto = subj => `mailto:${EMAIL}?subject=${encodeURIComponent(subj)}`;
@@ -688,7 +689,8 @@ BEATS.forEach((b, i) => {
   }
   el.querySelector('.buy').addEventListener('click', e => {
     e.stopPropagation();
-    window.location.href = mailto(`Beat license — ${b.title} (${b.bpm} BPM, ${b.key})`);
+    const dest = b.buy || BEATSTARS;
+    window.open(dest, '_blank');
   });
 
   beatList.appendChild(el);
@@ -707,7 +709,7 @@ LICENSES.forEach(l => {
     <ul>${l.perks.map(p => `<li>${p}</li>`).join('')}</ul>
     <button class="lbuy">Get this license</button>`;
   el.querySelector('.lbuy').addEventListener('click', () => {
-    window.location.href = mailto(`${l.nm} inquiry — Jazzy Productions`);
+    window.open(BEATSTARS, '_blank');
   });
   licGrid.appendChild(el);
 });
